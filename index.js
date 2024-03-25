@@ -19,6 +19,7 @@ app.get('/api/weather-details', async (req, res) => {
     res.json(getWeatherData);
   }
 });
+
 app.listen(8002, () => {
   console.log('server is listening....');
 });
