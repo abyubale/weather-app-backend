@@ -3,6 +3,19 @@ import express from 'express';
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+  ); // Allow specific HTTP methods
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  ); // Allow specific headers
+  next();
+});
+
 app.get('/api/weather-details', async (req, res) => {
   const { city, lat, lon } = req.query;
 
